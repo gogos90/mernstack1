@@ -26,7 +26,6 @@ app.post('/api/users/register', (req,res) => {
 app.post('/api/users/login' , (req,res) => {
     // 1. DB안에서 요청된 email 찾기.
     User.findOne({email : req.body.email}, (err, user) => {
-        
         if(!user) {
             return res.json({
                 loginSuccess : false,
@@ -76,7 +75,12 @@ app.get('/api/users/logout', auth, (req, res) => {
     });
 });
 
+app.get('/api/hello',(req,res) => {
 
-app.listen(3000, () => {
-    console.log('server 3000 start');
+    res.send('안녕하세요~');
+});
+
+
+app.listen(5000, () => {
+    console.log('server 5000 start');
 });
